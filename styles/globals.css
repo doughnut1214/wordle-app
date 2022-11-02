@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form{
+    @apply bg-gray-500 rounded-lg text-white p-2 justify-center items-center
+}
+.form-input{
+    @apply p-2 text-black rounded-lg mt-1
+}
+
+.btn-primary {
+    @apply bg-gray-300 hover:bg-gray-200 rounded-lg p-2 ml-2 mt-1 text-black
+}
+.form-label{
+    @apply mr-2
+}

@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 
 interface Wordboardprops {
     target: string,
@@ -7,15 +7,23 @@ interface Wordboardprops {
 //todo: make each character appear as it comes in
 const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
 
-    const [successChar, SetSuccessChar] = useState<string[]>([])
+    const BuildHint = () =>{
+        let hint: string = ""
+        for(let i = 0; i < target.length; ++i){
+            console.log("building")
+            hint+="_ "
+        }
+        return hint
+    }
     if (recentGuess === target) {
         return (
             <h1>{target}</h1>
         )
     }
     else {
+        
         return (
-            <h1>_ _ _ _</h1>
+            <h1>{BuildHint()}</h1>
         )
 
     }

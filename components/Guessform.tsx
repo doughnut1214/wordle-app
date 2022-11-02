@@ -1,9 +1,10 @@
 import React, { useState, SetStateAction } from "react"
 
 interface Guessformprops {
-    passGuess: React.Dispatch<SetStateAction<string[]>>
+    passGuess: React.Dispatch<SetStateAction<string[]>> //pass the guess to parent Wordle component
+    length: number  //length of the word as to set the input max attr
 }
-const Guessform = ({ passGuess }: Guessformprops) => {
+const Guessform = ({ passGuess, length }: Guessformprops) => {
     const [guess, SetGuess] = useState<string>('')
 
     const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,11 +14,11 @@ const Guessform = ({ passGuess }: Guessformprops) => {
         SetGuess('')
     }
     return (
-        <form onSubmit={HandleSubmit} className=" bg-gray-500 rounded-lg text-white p-2 justify-center items-center">
+        <form onSubmit={HandleSubmit} className="form">
             <h1>Guess Form</h1>
-            <label htmlFor="guess" className="mr-2">Your guess</label>
-            <input type="text" value={guess} name="guess" className="p-2 text-black" maxLength={4} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { SetGuess(e.target.value) }} />
-            <button type="submit" className="bg-gray-300 hover:bg-gray-200 rounded-lg p-2 ml-2 text-black">Make Guess</button>
+            <label htmlFor="guess" className="form-label">Your guess</label>
+            <input type="text" value={guess} name="guess" className="form-input" maxLength={length} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { SetGuess(e.target.value) }} />
+            <button type="submit" className="btn-primary">Make Guess</button>
         </form>
     )
 
