@@ -10,8 +10,8 @@ const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
     const BuildHint = () =>{
         let hint: string = ""
         for(let i = 0; i < target.length; ++i){
-            console.log("building")
-            hint+="_ "
+            
+            hint+=" _ "
         }
         return hint
     }

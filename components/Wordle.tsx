@@ -16,15 +16,16 @@ const Wordle = () => {
     useEffect(()=>{
         SetPastGuesses([])
     },[successWord])
-    
+
     return (
         <div>
             <Wordboard target={successWord} recentGuess={pastGuesses[lastGuess]} />
-            <Gamerow targetword={successWord} guess={pastGuesses[0]} />
-            <Gamerow targetword={successWord} guess={pastGuesses[1]} />
-            <Gamerow targetword={successWord} guess={pastGuesses[2]} />
-            <Gamerow targetword={successWord} guess={pastGuesses[3]} />
-            <Gamerow targetword={successWord} guess={pastGuesses[4]} />
+            
+            <Gamerow targetword={successWord} key={1} guess={pastGuesses[0]} />
+            <Gamerow targetword={successWord} key={2} guess={pastGuesses[1]} />
+            <Gamerow targetword={successWord} key={3} guess={pastGuesses[2]} />
+            <Gamerow targetword={successWord} key={4} guess={pastGuesses[3]} />
+            <Gamerow targetword={successWord} key={5} guess={pastGuesses[4]} />
             
 
             <Guessform passGuess={SetPastGuesses} length={successWord.length} />

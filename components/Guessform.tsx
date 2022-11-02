@@ -17,7 +17,7 @@ const Guessform = ({ passGuess, length }: Guessformprops) => {
         <form onSubmit={HandleSubmit} className="form">
             <h1>Guess Form</h1>
             <label htmlFor="guess" className="form-label">Your guess</label>
-            <input type="text" value={guess} name="guess" className="form-input" maxLength={length} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { SetGuess(e.target.value) }} />
+            <input type="text" value={guess} name="guess" className="form-input" maxLength={length} minLength={length} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { SetGuess(e.target.value) }} />
             <button type="submit" className="btn-primary">Make Guess</button>
         </form>
     )

@@ -10,13 +10,13 @@ const Gamerow = ({guess, targetword}: Gamerowprops) =>{
     const BuildLetterblocks = () =>{
         let blocks: JSX.Element[] = []
         for(let i = 0; i < targetword.length; i++){
-            console.log("iteration:", i)
+            
             if(!guess){
-                blocks.push(<Letterblock letter="" targetLetter={targetword[i]} targetWord={targetword}/>)
+                blocks.push(<Letterblock letter="" key={i} targetLetter={targetword[i]} targetWord={targetword}/>)
                 
             }
             else{
-                blocks.push(<Letterblock letter={guess[i]} targetLetter={targetword[i]} targetWord={targetword} />)
+                blocks.push(<Letterblock letter={guess[i]} key={i} targetLetter={targetword[i]} targetWord={targetword} />)
             }
         }
         return blocks
