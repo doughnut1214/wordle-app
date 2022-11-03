@@ -10,7 +10,7 @@ const Guessform = ({ passGuess, length }: Guessformprops) => {
     const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log("your guess:", guess)
-        passGuess(prev => [...prev, guess])
+        passGuess(prev => [...prev, guess.toUpperCase()])
         SetGuess('')
     }
     return (

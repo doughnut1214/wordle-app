@@ -5,18 +5,19 @@ interface Letterblockprop{
     targetWord: string
 }
 const Letterblock = ({letter, targetLetter, targetWord}: Letterblockprop) =>{
-
+   
     if(!letter){
-        return (<div>_</div>)
+        return (<div className="letterblock gametext">_</div>)
     }
     if(letter === targetLetter){
-        return(<div className="text-green-300">{targetLetter}</div>)
+        return(<div className="letterblock letterblock-match gametext">{letter}</div>)
     }
+    //find out how to deal with duplicates 
     if(targetWord.includes(letter)){
-        return(<div className="text-yellow-300">{targetLetter}</div>)
+        return(<div className="letterblock letterblock-contain gametext">{letter}</div>)
     }
     return (
-        <div>{letter}</div>
+        <div className="letterblock gametext">{letter}</div>
     )
 }
 export default Letterblock

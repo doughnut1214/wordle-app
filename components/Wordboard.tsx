@@ -17,13 +17,13 @@ const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
     }
     if (recentGuess === target) {
         return (
-            <h1>{target}</h1>
+            <h1 className="gametext">{target}</h1>
         )
     }
     else {
         
         return (
-            <h1>{BuildHint()}</h1>
+            <h1 className="gametext">{BuildHint()}</h1>
         )
 
     }

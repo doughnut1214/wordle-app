@@ -9,7 +9,7 @@ const Wordle = () => {
         with the guesses, change their color if they are right or wrong or missing
     */
     //todo: set successword from api returning random 4 letter word
-    const [successWord, SetSuccessWord] = useState<string>('Test')
+    const [successWord, SetSuccessWord] = useState<string>('STEAMERS')
     const [pastGuesses, SetPastGuesses] = useState<string[]>([])
     const [isWon, SetIsWon] = useState<boolean>(false)
     let lastGuess = pastGuesses.length -1

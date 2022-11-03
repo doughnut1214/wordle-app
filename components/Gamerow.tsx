@@ -24,7 +24,7 @@ const Gamerow = ({guess, targetword}: Gamerowprops) =>{
     
      
     return(
-        <div className='flex '>
+        <div className='flex grow w-full m-auto justify-center'>
             {BuildLetterblocks()}
 
         </div>
