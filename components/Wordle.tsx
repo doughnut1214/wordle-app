@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Guessform from "./Guessform"
 import Gamerow from "./Gamerow"
 import Wordboard from "./Wordboard"
+import Victorybanner from "./Victorybanner"
 
 const Wordle = () => {
     /*
@@ -19,8 +20,8 @@ const Wordle = () => {
 
     return (
         <div>
+            <Victorybanner hasWon={isWon}/>
             <Wordboard target={successWord} recentGuess={pastGuesses[lastGuess]} />
-            
             <Gamerow targetword={successWord} key={1} guess={pastGuesses[0]} />
             <Gamerow targetword={successWord} key={2} guess={pastGuesses[1]} />
             <Gamerow targetword={successWord} key={3} guess={pastGuesses[2]} />
@@ -28,7 +29,7 @@ const Wordle = () => {
             <Gamerow targetword={successWord} key={5} guess={pastGuesses[4]} />
             
 
-            <Guessform passGuess={SetPastGuesses} length={successWord.length} />
+            <Guessform passGuess={SetPastGuesses} length={successWord.length} targetWord={successWord} passWin={SetIsWon} />
         </div>
     )
 }
