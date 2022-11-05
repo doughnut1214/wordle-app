@@ -16,7 +16,7 @@
     @apply mr-2
 }
 .letterblock{
-    @apply ml-1 mr-2 
+    @apply ml-1 mr-2 mb-2
 }
 .letterblock-match{
     @apply text-green-300
