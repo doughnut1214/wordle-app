@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 
 
 interface Wordboardprops {
@@ -7,13 +8,17 @@ interface Wordboardprops {
 //todo: make each character appear as it comes in
 const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
 
+    const [hint, setHint] = useState<string[]>([])
+    useEffect(()=>{
+        BuildHint()
+    }, [])
     const BuildHint = () =>{
-        let hint: string = ""
+        let hint: string[] = []
         for(let i = 0; i < target.length; ++i){
             
-            hint+=" _ "
+            hint.push(" _ ")
         }
-        return hint
+        setHint(hint)
     }
     if (recentGuess === target) {
         return (
@@ -23,7 +28,7 @@ const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
     else {
         
         return (
-            <h1 className="gametext">{BuildHint()}</h1>
+            <h1 className="gametext">{[...hint]}</h1>
         )
 
     }
