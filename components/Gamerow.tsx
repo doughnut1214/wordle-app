@@ -4,10 +4,12 @@ type Gamerowprops = {
     guess: string | undefined 
     targetword: string
 }
+//todo: rebuild this using state 
 const Gamerow = ({guess, targetword}: Gamerowprops) =>{
 
-
+    
     const BuildLetterblocks = () =>{
+        console.log("inside build blocks ")
         let blocks: JSX.Element[] = []
         for(let i = 0; i < targetword.length; i++){
             
