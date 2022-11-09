@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react'
 import Letterblock from './Letterblock'
 type Gamerowprops = {
     guess: string | undefined 
@@ -7,9 +8,11 @@ type Gamerowprops = {
 //todo: rebuild this using state 
 const Gamerow = ({guess, targetword}: Gamerowprops) =>{
 
-    
+    useEffect(()=>{
+
+    }, [targetword])
     const BuildLetterblocks = () =>{
-        console.log("inside build blocks ")
+        
         let blocks: JSX.Element[] = []
         for(let i = 0; i < targetword.length; i++){
             

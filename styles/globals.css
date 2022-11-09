@@ -10,7 +10,7 @@
 }
 
 .btn-primary {
-    @apply bg-gray-300 hover:bg-gray-200 rounded-lg p-2 ml-2 mt-1 text-black
+    @apply bg-gray-300 hover:bg-gray-200 rounded-lg p-2 ml-2 mt-1 text-black disabled:bg-gray-400 
 }
 .form-label{
     @apply mr-2

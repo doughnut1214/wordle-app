@@ -11,7 +11,7 @@ const Wordboard = ({ target, recentGuess }: Wordboardprops) => {
     const [hint, setHint] = useState<string[]>([])
     useEffect(()=>{
         BuildHint()
-    }, [])
+    }, [target])
     const BuildHint = () =>{
         let hint: string[] = []
         for(let i = 0; i < target.length; ++i){

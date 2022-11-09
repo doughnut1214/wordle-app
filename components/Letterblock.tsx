@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 //todo: make css for the blocks 
 interface Letterblockprop{
     letter: string | undefined
@@ -5,6 +7,7 @@ interface Letterblockprop{
     targetWord: string
 }
 const Letterblock = ({letter, targetLetter, targetWord}: Letterblockprop) =>{
+    
    
     if(!letter){
         return (<div className="letterblock gametext">_</div>)

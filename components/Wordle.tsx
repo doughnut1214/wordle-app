@@ -21,8 +21,9 @@ const Wordle = () => {
         if(!data.ok){
             console.log("yep no key baby")
         }
+        SetSuccessWord(data.word)
     }
-    const [successWord, SetSuccessWord] = useState<string>('TESTS')
+    const [successWord, SetSuccessWord] = useState<string>('')
     const [pastGuesses, SetPastGuesses] = useState<string[]>([])
     const [isWon, SetIsWon] = useState<boolean>(false)
     let lastGuess = pastGuesses.length - 1
