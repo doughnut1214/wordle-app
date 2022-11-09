@@ -11,39 +11,61 @@ const Wordle = () => {
     */
     //todo: set successword from api returning random  word
     const getWord = async () => {
-        const result = await fetch("/api/wotd", {
-            method: "GET", headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        })
-        const data = await result.json()
-        if(!data.ok){
-            console.log("yep no key baby")
+        try {
+            setError('')
+            const result = await fetch("/api/wotd", {
+                method: "GET", headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            if (!result.ok) throw new Error
+
+
+            const data = await result.json()
+            SetSuccessWord(data.word[0].toUpperCase())
+
+
         }
-        SetSuccessWord(data.word)
+        catch {
+            setError("Something went wrong.")
+        }
+
     }
     const [successWord, SetSuccessWord] = useState<string>('')
     const [pastGuesses, SetPastGuesses] = useState<string[]>([])
+    const [error, setError] = useState<string>('')
     const [isWon, SetIsWon] = useState<boolean>(false)
-    let lastGuess = pastGuesses.length - 1
+    const [reset, SetReset] = useState<boolean>(false)
+
     useEffect(() => {
         getWord()
         SetPastGuesses([])
-    }, [successWord])
-
+    }, [reset])
+    if (!successWord) {
+        return (
+            <div>
+                <h1>Loading...</h1>
+            </div>
+        )
+    }
     return (
         <div>
+            {error && <h1 className="error"><b>{error}</b></h1>}
             <Victorybanner hasWon={isWon} />
-            <Wordboard target={successWord} recentGuess={pastGuesses[lastGuess]} />
+            <Wordboard target={successWord} recentGuess={pastGuesses[pastGuesses.length - 1]} />
             <Gamerow targetword={successWord} key={1} guess={pastGuesses[0]} />
             <Gamerow targetword={successWord} key={2} guess={pastGuesses[1]} />
             <Gamerow targetword={successWord} key={3} guess={pastGuesses[2]} />
             <Gamerow targetword={successWord} key={4} guess={pastGuesses[3]} />
             <Gamerow targetword={successWord} key={5} guess={pastGuesses[4]} />
-
+            {pastGuesses[4] && <p>The word was <span className="gametext Letterblock-match">{successWord}</span></p>}
 
             <Guessform passGuess={SetPastGuesses} length={successWord.length} targetWord={successWord} passWin={SetIsWon} />
+            <button onClick={() => {
+                SetReset(!reset)
+                SetIsWon(false)
+            }} className="btn-primary">Reset Game</button>
         </div>
     )
 }
