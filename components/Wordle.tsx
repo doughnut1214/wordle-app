@@ -24,7 +24,7 @@ const Wordle = () => {
 
 
             const data = await result.json()
-            SetSuccessWord(data.word[0].toUpperCase())
+            SetSuccessWord(data.word.toUpperCase())
 
 
         }
