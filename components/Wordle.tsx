@@ -9,9 +9,10 @@ const Wordle = () => {
         this component should keep track of all things happening in the game, pass the guess up from the guess form, fill the game row 
         with the guesses, change their color if they are right or wrong or missing
     */
-    //todo: set successword from api returning random  word
+    
     const getWord = async () => {
         try {
+            SetLoading(true)
             setError('')
             const result = await fetch("/api/wotd", {
                 method: "GET", headers: {
@@ -29,6 +30,8 @@ const Wordle = () => {
         }
         catch {
             setError("Something went wrong.")
+        } finally {
+            SetLoading(false)
         }
 
     }
@@ -37,7 +40,7 @@ const Wordle = () => {
     const [error, setError] = useState<string>('')
     const [isWon, SetIsWon] = useState<boolean>(false)
     const [reset, SetReset] = useState<boolean>(false)
-
+    const [loading, SetLoading] = useState<boolean>(false)
     useEffect(() => {
         getWord()
         SetPastGuesses([])
@@ -59,13 +62,13 @@ const Wordle = () => {
             <Gamerow targetword={successWord} key={3} guess={pastGuesses[2]} />
             <Gamerow targetword={successWord} key={4} guess={pastGuesses[3]} />
             <Gamerow targetword={successWord} key={5} guess={pastGuesses[4]} />
-            {pastGuesses[4] && <p>The word was <span className="gametext Letterblock-match">{successWord}</span></p>}
+            {pastGuesses[4] && <p>The word was <span className="gametext letterblock-match">{successWord}</span></p>}
 
-            <Guessform passGuess={SetPastGuesses} length={successWord.length} targetWord={successWord} passWin={SetIsWon} />
+            <Guessform passGuess={SetPastGuesses} length={successWord.length} targetWord={successWord} passWin={SetIsWon} isWon={isWon} />
             <button onClick={() => {
                 SetReset(!reset)
                 SetIsWon(false)
-            }} className="btn-primary">Reset Game</button>
+            }} className="btn-primary" disabled={loading}>{loading? "Loading...":"Reset Game"}</button>
         </div>
     )
 }

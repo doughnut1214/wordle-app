@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {RandomWord} from '../../utils/RandomWord'
-//when api key comes in, change response from any to WOTD
+
 type WOTD = {
-    //implement me
+    
     word: string
 }
 type methodError = {

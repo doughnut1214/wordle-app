@@ -5,12 +5,13 @@ type Gamerowprops = {
     guess: string | undefined 
     targetword: string
 }
-//todo: rebuild this using state 
+
 const Gamerow = ({guess, targetword}: Gamerowprops) =>{
 
     useEffect(()=>{
 
     }, [targetword])
+    
     const BuildLetterblocks = () =>{
         
         let blocks: JSX.Element[] = []
